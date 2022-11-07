@@ -1,0 +1,203 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D72AF88D-1E81-4CF0-8985-EF02CEB006BD}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>_2DBlender.My.MyApplication</StartupObject>
+    <RootNamespace>_2DBlender</RootNamespace>
+    <AssemblyName>2DBlender</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>WindowsForms</MyType>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>2DBlender.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>2DBlender.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows.Forms" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+    <Import Include="System.Threading.Tasks" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Arc.vb" />
+    <Compile Include="Camera.vb" />
+    <Compile Include="CoordinateSystem.vb" />
+    <Compile Include="EdgeProperties.Designer.vb">
+      <DependentUpon>EdgeProperties.vb</DependentUpon>
+    </Compile>
+    <Compile Include="EdgeProperties.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Entity.vb" />
+    <Compile Include="FaceProperties.Designer.vb">
+      <DependentUpon>FaceProperties.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FaceProperties.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Fill.vb" />
+    <Compile Include="Graph.vb" />
+    <Compile Include="Interpolation.vb" />
+    <Compile Include="Keyframe.vb" />
+    <Compile Include="KeyframeHandler.vb" />
+    <Compile Include="KeyframeViewport.Designer.vb">
+      <DependentUpon>KeyframeViewport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="KeyframeViewport.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Main.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Main.Designer.vb">
+      <DependentUpon>Main.vb</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="NewFile.Designer.vb">
+      <DependentUpon>NewFile.vb</DependentUpon>
+    </Compile>
+    <Compile Include="NewFile.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Node.vb" />
+    <Compile Include="RenderViewport.Designer.vb">
+      <DependentUpon>RenderViewport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="RenderViewport.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RenderArc.vb" />
+    <Compile Include="RenderFill.vb" />
+    <Compile Include="TPoint.vb" />
+    <Compile Include="TSize.vb" />
+    <Compile Include="TwoDBlenderFile.vb" />
+    <Compile Include="VertexProperties.Designer.vb">
+      <DependentUpon>VertexProperties.vb</DependentUpon>
+    </Compile>
+    <Compile Include="VertexProperties.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ViewportProperties.Designer.vb">
+      <DependentUpon>ViewportProperties.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ViewportProperties.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="EdgeProperties.resx">
+      <DependentUpon>EdgeProperties.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FaceProperties.resx">
+      <DependentUpon>FaceProperties.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="KeyframeViewport.resx">
+      <DependentUpon>KeyframeViewport.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main.resx">
+      <DependentUpon>Main.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewFile.resx">
+      <DependentUpon>NewFile.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RenderViewport.resx">
+      <DependentUpon>RenderViewport.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VertexProperties.resx">
+      <DependentUpon>VertexProperties.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewportProperties.resx">
+      <DependentUpon>ViewportProperties.vb</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="App.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+</Project>
