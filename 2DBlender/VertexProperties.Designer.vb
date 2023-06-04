@@ -26,8 +26,6 @@ Partial Class VertexProperties
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.Keyframe = New System.Windows.Forms.Button()
-        Me.X = New System.Windows.Forms.NumericUpDown()
         Me.Y = New System.Windows.Forms.NumericUpDown()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.NameValue = New System.Windows.Forms.TextBox()
@@ -35,10 +33,15 @@ Partial Class VertexProperties
         Me.TableLayoutPanel2 = New System.Windows.Forms.TableLayoutPanel()
         Me.InterpolationType = New System.Windows.Forms.ComboBox()
         Me.AddInterpolation = New System.Windows.Forms.Button()
+        Me.TableLayoutPanel3 = New System.Windows.Forms.TableLayoutPanel()
+        Me.Keyframe = New System.Windows.Forms.Button()
+        Me.Delete = New System.Windows.Forms.Button()
+        Me.X = New System.Windows.Forms.NumericUpDown()
         Me.TableLayoutPanel1.SuspendLayout()
-        CType(Me.X, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Y, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TableLayoutPanel2.SuspendLayout()
+        Me.TableLayoutPanel3.SuspendLayout()
+        CType(Me.X, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'TableLayoutPanel1
@@ -46,16 +49,17 @@ Partial Class VertexProperties
         Me.TableLayoutPanel1.ColumnCount = 2
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
+        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 15.0!))
         Me.TableLayoutPanel1.Controls.Add(Me.Label1, 0, 2)
         Me.TableLayoutPanel1.Controls.Add(Me.Label2, 0, 1)
         Me.TableLayoutPanel1.Controls.Add(Me.Label3, 0, 3)
-        Me.TableLayoutPanel1.Controls.Add(Me.Keyframe, 1, 2)
-        Me.TableLayoutPanel1.Controls.Add(Me.X, 1, 1)
         Me.TableLayoutPanel1.Controls.Add(Me.Y, 1, 3)
         Me.TableLayoutPanel1.Controls.Add(Me.Label4, 0, 0)
         Me.TableLayoutPanel1.Controls.Add(Me.NameValue, 1, 0)
         Me.TableLayoutPanel1.Controls.Add(Me.Label5, 0, 4)
         Me.TableLayoutPanel1.Controls.Add(Me.TableLayoutPanel2, 1, 4)
+        Me.TableLayoutPanel1.Controls.Add(Me.TableLayoutPanel3, 1, 2)
+        Me.TableLayoutPanel1.Controls.Add(Me.X, 1, 1)
         Me.TableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.TableLayoutPanel1.Location = New System.Drawing.Point(0, 0)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
@@ -100,25 +104,6 @@ Partial Class VertexProperties
         Me.Label3.TabIndex = 2
         Me.Label3.Text = "Y"
         Me.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        '
-        'Keyframe
-        '
-        Me.Keyframe.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Keyframe.Location = New System.Drawing.Point(128, 93)
-        Me.Keyframe.Name = "Keyframe"
-        Me.Keyframe.Size = New System.Drawing.Size(119, 39)
-        Me.Keyframe.TabIndex = 3
-        Me.Keyframe.Text = "Keyframe"
-        Me.Keyframe.UseVisualStyleBackColor = True
-        '
-        'X
-        '
-        Me.X.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.X.Location = New System.Drawing.Point(128, 57)
-        Me.X.Maximum = New Decimal(New Integer() {1000, 0, 0, 0})
-        Me.X.Name = "X"
-        Me.X.Size = New System.Drawing.Size(119, 20)
-        Me.X.TabIndex = 4
         '
         'Y
         '
@@ -195,6 +180,53 @@ Partial Class VertexProperties
         Me.AddInterpolation.Text = "Add Interpolation"
         Me.AddInterpolation.UseVisualStyleBackColor = True
         '
+        'TableLayoutPanel3
+        '
+        Me.TableLayoutPanel3.ColumnCount = 2
+        Me.TableLayoutPanel3.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 53.33333!))
+        Me.TableLayoutPanel3.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 46.66667!))
+        Me.TableLayoutPanel3.Controls.Add(Me.Keyframe, 0, 0)
+        Me.TableLayoutPanel3.Controls.Add(Me.Delete, 1, 0)
+        Me.TableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.TableLayoutPanel3.Location = New System.Drawing.Point(127, 92)
+        Me.TableLayoutPanel3.Margin = New System.Windows.Forms.Padding(2)
+        Me.TableLayoutPanel3.Name = "TableLayoutPanel3"
+        Me.TableLayoutPanel3.RowCount = 1
+        Me.TableLayoutPanel3.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
+        Me.TableLayoutPanel3.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
+        Me.TableLayoutPanel3.Size = New System.Drawing.Size(121, 41)
+        Me.TableLayoutPanel3.TabIndex = 10
+        '
+        'Keyframe
+        '
+        Me.Keyframe.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Keyframe.Location = New System.Drawing.Point(3, 3)
+        Me.Keyframe.Name = "Keyframe"
+        Me.Keyframe.Size = New System.Drawing.Size(58, 35)
+        Me.Keyframe.TabIndex = 3
+        Me.Keyframe.Text = "Keyframe"
+        Me.Keyframe.UseVisualStyleBackColor = True
+        '
+        'Delete
+        '
+        Me.Delete.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Delete.Location = New System.Drawing.Point(66, 2)
+        Me.Delete.Margin = New System.Windows.Forms.Padding(2)
+        Me.Delete.Name = "Delete"
+        Me.Delete.Size = New System.Drawing.Size(53, 37)
+        Me.Delete.TabIndex = 4
+        Me.Delete.Text = "Delete"
+        Me.Delete.UseVisualStyleBackColor = True
+        '
+        'X
+        '
+        Me.X.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.X.Location = New System.Drawing.Point(128, 57)
+        Me.X.Maximum = New Decimal(New Integer() {1000, 0, 0, 0})
+        Me.X.Name = "X"
+        Me.X.Size = New System.Drawing.Size(119, 20)
+        Me.X.TabIndex = 4
+        '
         'VertexProperties
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -204,9 +236,10 @@ Partial Class VertexProperties
         Me.Size = New System.Drawing.Size(250, 250)
         Me.TableLayoutPanel1.ResumeLayout(False)
         Me.TableLayoutPanel1.PerformLayout()
-        CType(Me.X, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Y, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TableLayoutPanel2.ResumeLayout(False)
+        Me.TableLayoutPanel3.ResumeLayout(False)
+        CType(Me.X, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -224,4 +257,6 @@ Partial Class VertexProperties
     Private WithEvents TableLayoutPanel2 As TableLayoutPanel
     Friend WithEvents InterpolationType As ComboBox
     Friend WithEvents AddInterpolation As Button
+    Friend WithEvents TableLayoutPanel3 As TableLayoutPanel
+    Friend WithEvents Delete As Button
 End Class

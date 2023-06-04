@@ -4,19 +4,22 @@
     Public KF As KeyframeHandler(Of T) 'stores all keyframes in a custom linkedlist
     Public CurrentValue As T 'stores the current value stored (either TPoint or color)
     Public Overridable ReadOnly Property Index As UInteger
-    Public Overridable ReadOnly Property IsSelectedItem As Boolean
-        Get
-            Return ParentGraph.SelectedItem Is Me
-        End Get
-    End Property
     Public Overridable ReadOnly Property ParentGraph As Graph
+    Public ReadOnly Property IsSelectedItem As Boolean
         Get
-            Return Main.CurrentLayer
+            Try
+                If ParentGraph.SelectedItem.Name = Name Then
+                    Return True
+                Else
+                    Return False
+                End If
+            Catch ex As NullReferenceException
+                Return False
+            End Try
         End Get
     End Property
-
     Public Sub New(Input As T, Index As UInteger) 'basic initialiser for all entities
-        Name = "Entity" & Index
+        Name = "Entity" & Index + 1
         Highlighted = False
         KF = New KeyframeHandler(Of T)
         CurrentValue = Input
@@ -27,16 +30,6 @@
     End Sub
     Public Overridable Sub EditKeyframe(Frame As UInteger, Input As T)
         KF.Add(Frame, Input)
-    End Sub
-    Public Overridable Function GetKeyframe(Frame As UInteger) As T
-        Return KF.GetKeyframe(Frame).Data
-    End Function
-    Public Overridable Sub PushKeyframe(Frame As UInteger)
-        Try
-            Dim thing As Keyframe(Of T) = KF.GetKeyframe(Frame)
-            CurrentValue = thing.Data
-        Catch
-        End Try
     End Sub
     Public Overridable Sub DrawKeyframe(g As Graphics)
         KF.Draw(g)

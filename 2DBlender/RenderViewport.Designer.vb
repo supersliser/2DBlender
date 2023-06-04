@@ -27,6 +27,10 @@ Partial Class RenderViewport
         Me.ToolStrip = New System.Windows.Forms.ToolStrip()
         Me.File = New System.Windows.Forms.ToolStripDropDownButton()
         Me.SaveAs = New System.Windows.Forms.ToolStripMenuItem()
+        Me.BMPFileButton = New System.Windows.Forms.ToolStripMenuItem()
+        Me.PNGFileButton = New System.Windows.Forms.ToolStripMenuItem()
+        Me.JPEGFileButton = New System.Windows.Forms.ToolStripMenuItem()
+        Me.GIFFileButton = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripLabel1 = New System.Windows.Forms.ToolStripLabel()
         Me.RenderProgress = New System.Windows.Forms.ToolStripProgressBar()
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
@@ -35,8 +39,9 @@ Partial Class RenderViewport
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
         Me.RenderWorker = New System.ComponentModel.BackgroundWorker()
-        Me.Log = New System.Windows.Forms.ListBox()
         Me.SplitContainer1 = New System.Windows.Forms.SplitContainer()
+        Me.Log = New System.Windows.Forms.ListBox()
+        Me.SaveFileDialog = New System.Windows.Forms.SaveFileDialog()
         CType(Me.RenderBox, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ToolStrip.SuspendLayout()
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -76,10 +81,34 @@ Partial Class RenderViewport
         '
         'SaveAs
         '
+        Me.SaveAs.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BMPFileButton, Me.PNGFileButton, Me.JPEGFileButton, Me.GIFFileButton})
         Me.SaveAs.Name = "SaveAs"
-        Me.SaveAs.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.S), System.Windows.Forms.Keys)
         Me.SaveAs.Size = New System.Drawing.Size(180, 22)
         Me.SaveAs.Text = "Save As"
+        '
+        'BMPFileButton
+        '
+        Me.BMPFileButton.Name = "BMPFileButton"
+        Me.BMPFileButton.Size = New System.Drawing.Size(288, 22)
+        Me.BMPFileButton.Text = "Bitmap (.bmp)"
+        '
+        'PNGFileButton
+        '
+        Me.PNGFileButton.Name = "PNGFileButton"
+        Me.PNGFileButton.Size = New System.Drawing.Size(288, 22)
+        Me.PNGFileButton.Text = "Portable Network Graphics (.png)"
+        '
+        'JPEGFileButton
+        '
+        Me.JPEGFileButton.Name = "JPEGFileButton"
+        Me.JPEGFileButton.Size = New System.Drawing.Size(288, 22)
+        Me.JPEGFileButton.Text = "Joint Photographic Experts Group (.jpeg)"
+        '
+        'GIFFileButton
+        '
+        Me.GIFFileButton.Name = "GIFFileButton"
+        Me.GIFFileButton.Size = New System.Drawing.Size(288, 22)
+        Me.GIFFileButton.Text = "Graphics Interchange Format (.gif)"
         '
         'ToolStripLabel1
         '
@@ -95,7 +124,7 @@ Partial Class RenderViewport
         Me.RenderProgress.Name = "RenderProgress"
         Me.RenderProgress.Size = New System.Drawing.Size(400, 22)
         Me.RenderProgress.Step = 1
-        Me.RenderProgress.Style = System.Windows.Forms.ProgressBarStyle.Marquee
+        Me.RenderProgress.Style = System.Windows.Forms.ProgressBarStyle.Continuous
         '
         'ToolStripSeparator1
         '
@@ -133,15 +162,8 @@ Partial Class RenderViewport
         '
         'RenderWorker
         '
-        '
-        'Log
-        '
-        Me.Log.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Log.FormattingEnabled = True
-        Me.Log.Location = New System.Drawing.Point(0, 0)
-        Me.Log.Name = "Log"
-        Me.Log.Size = New System.Drawing.Size(177, 425)
-        Me.Log.TabIndex = 2
+        Me.RenderWorker.WorkerReportsProgress = True
+        Me.RenderWorker.WorkerSupportsCancellation = True
         '
         'SplitContainer1
         '
@@ -159,6 +181,15 @@ Partial Class RenderViewport
         Me.SplitContainer1.Size = New System.Drawing.Size(800, 425)
         Me.SplitContainer1.SplitterDistance = 619
         Me.SplitContainer1.TabIndex = 3
+        '
+        'Log
+        '
+        Me.Log.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Log.FormattingEnabled = True
+        Me.Log.Location = New System.Drawing.Point(0, 0)
+        Me.Log.Name = "Log"
+        Me.Log.Size = New System.Drawing.Size(177, 425)
+        Me.Log.TabIndex = 0
         '
         'RenderViewport
         '
@@ -187,13 +218,18 @@ Partial Class RenderViewport
     Friend WithEvents File As ToolStripDropDownButton
     Private WithEvents ToolStripLabel1 As ToolStripLabel
     Friend WithEvents RenderProgress As ToolStripProgressBar
-    Friend WithEvents SaveAs As ToolStripMenuItem
     Friend WithEvents Pause As ToolStripButton
     Friend WithEvents Play As ToolStripButton
     Friend WithEvents RenderWorker As System.ComponentModel.BackgroundWorker
     Friend WithEvents ToolStripSeparator1 As ToolStripSeparator
     Friend WithEvents ToolStripSeparator2 As ToolStripSeparator
     Friend WithEvents ToolStripSeparator3 As ToolStripSeparator
-    Friend WithEvents Log As ListBox
     Friend WithEvents SplitContainer1 As SplitContainer
+    Friend WithEvents SaveAs As ToolStripMenuItem
+    Friend WithEvents BMPFileButton As ToolStripMenuItem
+    Friend WithEvents PNGFileButton As ToolStripMenuItem
+    Friend WithEvents JPEGFileButton As ToolStripMenuItem
+    Friend WithEvents GIFFileButton As ToolStripMenuItem
+    Friend WithEvents SaveFileDialog As SaveFileDialog
+    Friend WithEvents Log As ListBox
 End Class

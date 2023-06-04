@@ -1,5 +1,17 @@
 ﻿Public Class Node 'Base vertex class
     Inherits Entity(Of TPoint)
+    Public Overrides ReadOnly Property ParentGraph As Graph
+        Get
+            For i = 0 To Main.Layers.Count - 1
+                For j = 0 To Main.Layers(i).Vertices.Count - 1
+                    If Main.Layers(i).Vertices(j).Name = Name Then
+                        Return Main.Layers(i)
+                    End If
+                Next
+            Next
+            Return Nothing
+        End Get
+    End Property
     Public Overrides ReadOnly Property Index As UInteger 'index within graph's linked list
         Get
             For i = 0 To ParentGraph.Vertices.Count
@@ -14,7 +26,7 @@
 
     Public Sub New(GridPoint As Point, Index As UInteger) 'constructor for vertices
         MyBase.New(New TPoint(GridPoint), Index)
-        Name = "Vertex " & Main.CurrentLayer.Vertices.Count - 1
+        Name = "Vertex " & Main.CurrentLayer.Vertices.Count + 1
     End Sub
     Public Sub New(Name As String, Point As TPoint, Index As UInteger)
         MyBase.New(Point, Index)
@@ -31,4 +43,10 @@
         End If
     End Sub
 
+    Public Sub PushKeyframe(CurrentFrame As UInteger)
+        Try
+            CurrentValue = KF.GetKeyframe(CurrentFrame).getDataTPoint(CurrentFrame)
+        Catch ex As Exception
+        End Try
+    End Sub
 End Class

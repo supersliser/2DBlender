@@ -30,30 +30,6 @@ Partial Class Main
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
         Me.Save = New System.Windows.Forms.ToolStripMenuItem()
         Me.SaveAs = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
-        Me.Import = New System.Windows.Forms.ToolStripMenuItem()
-        Me.Export = New System.Windows.Forms.ToolStripMenuItem()
-        Me.Edit = New System.Windows.Forms.ToolStripDropDownButton()
-        Me.Undo = New System.Windows.Forms.ToolStripMenuItem()
-        Me.Redo = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
-        Me.Cut = New System.Windows.Forms.ToolStripMenuItem()
-        Me.Copy = New System.Windows.Forms.ToolStripMenuItem()
-        Me.Paste = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
-        Me.Delete = New System.Windows.Forms.ToolStripMenuItem()
-        Me.View = New System.Windows.Forms.ToolStripDropDownButton()
-        Me.Zoom = New System.Windows.Forms.ToolStripMenuItem()
-        Me.Zoom10 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.Zoom25 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.Zoom50 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.Zoom100 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.Zoom150 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.Zoom200 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.Zoom300 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.Zoom400 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.DarkMode = New System.Windows.Forms.ToolStripMenuItem()
-        Me.Reset = New System.Windows.Forms.ToolStripMenuItem()
         Me.Render = New System.Windows.Forms.ToolStripDropDownButton()
         Me.RenderImage = New System.Windows.Forms.ToolStripMenuItem()
         Me.RenderAnimation = New System.Windows.Forms.ToolStripMenuItem()
@@ -61,6 +37,7 @@ Partial Class Main
         Me.ToolStripLabel1 = New System.Windows.Forms.ToolStripLabel()
         Me.SelectTool = New System.Windows.Forms.ToolStripButton()
         Me.MoveTool = New System.Windows.Forms.ToolStripButton()
+        Me.Delete = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator5 = New System.Windows.Forms.ToolStripSeparator()
         Me.ToolStripLabel2 = New System.Windows.Forms.ToolStripLabel()
         Me.CreatePrimitveTriangle = New System.Windows.Forms.ToolStripButton()
@@ -72,6 +49,9 @@ Partial Class Main
         Me.ConnectArcs = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator7 = New System.Windows.Forms.ToolStripSeparator()
         Me.CreateCamera = New System.Windows.Forms.ToolStripButton()
+        Me.CreateLayer = New System.Windows.Forms.ToolStripButton()
+        Me.ShowLayer = New System.Windows.Forms.ToolStripButton()
+        Me.HideLayer = New System.Windows.Forms.ToolStripButton()
         Me.KeyframeSplitter = New System.Windows.Forms.SplitContainer()
         Me.PropertiesSplitter = New System.Windows.Forms.SplitContainer()
         Me.SplitContainer1 = New System.Windows.Forms.SplitContainer()
@@ -80,6 +60,7 @@ Partial Class Main
         Me.OutputBox = New System.Windows.Forms.PictureBox()
         Me.OpenFileDialog = New System.Windows.Forms.OpenFileDialog()
         Me.SaveFileDialog = New System.Windows.Forms.SaveFileDialog()
+        Me.DeleteLayer = New System.Windows.Forms.ToolStripButton()
         Me.StatusStrip.SuspendLayout()
         Me.ToolStrip.SuspendLayout()
         CType(Me.KeyframeSplitter, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -99,7 +80,7 @@ Partial Class Main
         'StatusStrip
         '
         Me.StatusStrip.Dock = System.Windows.Forms.DockStyle.Top
-        Me.StatusStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.File, Me.Edit, Me.View, Me.Render})
+        Me.StatusStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.File, Me.Render})
         Me.StatusStrip.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow
         Me.StatusStrip.Location = New System.Drawing.Point(0, 0)
         Me.StatusStrip.Name = "StatusStrip"
@@ -109,7 +90,7 @@ Partial Class Main
         'File
         '
         Me.File.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
-        Me.File.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NewProject, Me.OpenProject, Me.ToolStripSeparator1, Me.Save, Me.SaveAs, Me.ToolStripSeparator2, Me.Import, Me.Export})
+        Me.File.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NewProject, Me.OpenProject, Me.ToolStripSeparator1, Me.Save, Me.SaveAs})
         Me.File.Image = CType(resources.GetObject("File.Image"), System.Drawing.Image)
         Me.File.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.File.ImageTransparentColor = System.Drawing.Color.Magenta
@@ -150,162 +131,6 @@ Partial Class Main
         Me.SaveAs.Size = New System.Drawing.Size(186, 22)
         Me.SaveAs.Text = "Save As"
         '
-        'ToolStripSeparator2
-        '
-        Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
-        Me.ToolStripSeparator2.Size = New System.Drawing.Size(183, 6)
-        '
-        'Import
-        '
-        Me.Import.Name = "Import"
-        Me.Import.Size = New System.Drawing.Size(186, 22)
-        Me.Import.Text = "Import"
-        '
-        'Export
-        '
-        Me.Export.Name = "Export"
-        Me.Export.Size = New System.Drawing.Size(186, 22)
-        Me.Export.Text = "Export"
-        '
-        'Edit
-        '
-        Me.Edit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
-        Me.Edit.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.Undo, Me.Redo, Me.ToolStripSeparator3, Me.Cut, Me.Copy, Me.Paste, Me.ToolStripSeparator4, Me.Delete})
-        Me.Edit.Image = CType(resources.GetObject("Edit.Image"), System.Drawing.Image)
-        Me.Edit.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.Edit.Name = "Edit"
-        Me.Edit.Size = New System.Drawing.Size(40, 20)
-        Me.Edit.Text = "Edit"
-        '
-        'Undo
-        '
-        Me.Undo.Name = "Undo"
-        Me.Undo.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.Z), System.Windows.Forms.Keys)
-        Me.Undo.Size = New System.Drawing.Size(144, 22)
-        Me.Undo.Text = "Undo"
-        '
-        'Redo
-        '
-        Me.Redo.Name = "Redo"
-        Me.Redo.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.Y), System.Windows.Forms.Keys)
-        Me.Redo.Size = New System.Drawing.Size(144, 22)
-        Me.Redo.Text = "Redo"
-        '
-        'ToolStripSeparator3
-        '
-        Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
-        Me.ToolStripSeparator3.Size = New System.Drawing.Size(141, 6)
-        '
-        'Cut
-        '
-        Me.Cut.Name = "Cut"
-        Me.Cut.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.X), System.Windows.Forms.Keys)
-        Me.Cut.Size = New System.Drawing.Size(144, 22)
-        Me.Cut.Text = "Cut"
-        '
-        'Copy
-        '
-        Me.Copy.Name = "Copy"
-        Me.Copy.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.C), System.Windows.Forms.Keys)
-        Me.Copy.Size = New System.Drawing.Size(144, 22)
-        Me.Copy.Text = "Copy"
-        '
-        'Paste
-        '
-        Me.Paste.Name = "Paste"
-        Me.Paste.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.V), System.Windows.Forms.Keys)
-        Me.Paste.Size = New System.Drawing.Size(144, 22)
-        Me.Paste.Text = "Paste"
-        '
-        'ToolStripSeparator4
-        '
-        Me.ToolStripSeparator4.Name = "ToolStripSeparator4"
-        Me.ToolStripSeparator4.Size = New System.Drawing.Size(141, 6)
-        '
-        'Delete
-        '
-        Me.Delete.Name = "Delete"
-        Me.Delete.ShortcutKeys = System.Windows.Forms.Keys.Delete
-        Me.Delete.Size = New System.Drawing.Size(144, 22)
-        Me.Delete.Text = "Delete"
-        '
-        'View
-        '
-        Me.View.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
-        Me.View.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.Zoom, Me.DarkMode, Me.Reset})
-        Me.View.Image = CType(resources.GetObject("View.Image"), System.Drawing.Image)
-        Me.View.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.View.Name = "View"
-        Me.View.Size = New System.Drawing.Size(45, 20)
-        Me.View.Text = "View"
-        '
-        'Zoom
-        '
-        Me.Zoom.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.Zoom10, Me.Zoom25, Me.Zoom50, Me.Zoom100, Me.Zoom150, Me.Zoom200, Me.Zoom300, Me.Zoom400})
-        Me.Zoom.Name = "Zoom"
-        Me.Zoom.Size = New System.Drawing.Size(148, 22)
-        Me.Zoom.Text = "Zoom"
-        '
-        'Zoom10
-        '
-        Me.Zoom10.Name = "Zoom10"
-        Me.Zoom10.Size = New System.Drawing.Size(102, 22)
-        Me.Zoom10.Text = "10%"
-        '
-        'Zoom25
-        '
-        Me.Zoom25.Name = "Zoom25"
-        Me.Zoom25.Size = New System.Drawing.Size(102, 22)
-        Me.Zoom25.Text = "25%"
-        '
-        'Zoom50
-        '
-        Me.Zoom50.Name = "Zoom50"
-        Me.Zoom50.Size = New System.Drawing.Size(102, 22)
-        Me.Zoom50.Text = "50%"
-        '
-        'Zoom100
-        '
-        Me.Zoom100.Name = "Zoom100"
-        Me.Zoom100.Size = New System.Drawing.Size(102, 22)
-        Me.Zoom100.Text = "100%"
-        '
-        'Zoom150
-        '
-        Me.Zoom150.Name = "Zoom150"
-        Me.Zoom150.Size = New System.Drawing.Size(102, 22)
-        Me.Zoom150.Text = "150%"
-        '
-        'Zoom200
-        '
-        Me.Zoom200.Name = "Zoom200"
-        Me.Zoom200.Size = New System.Drawing.Size(102, 22)
-        Me.Zoom200.Text = "200%"
-        '
-        'Zoom300
-        '
-        Me.Zoom300.Name = "Zoom300"
-        Me.Zoom300.Size = New System.Drawing.Size(102, 22)
-        Me.Zoom300.Text = "300%"
-        '
-        'Zoom400
-        '
-        Me.Zoom400.Name = "Zoom400"
-        Me.Zoom400.Size = New System.Drawing.Size(102, 22)
-        Me.Zoom400.Text = "400%"
-        '
-        'DarkMode
-        '
-        Me.DarkMode.Name = "DarkMode"
-        Me.DarkMode.Size = New System.Drawing.Size(148, 22)
-        Me.DarkMode.Text = "Dark Mode"
-        '
-        'Reset
-        '
-        Me.Reset.Name = "Reset"
-        Me.Reset.Size = New System.Drawing.Size(148, 22)
-        Me.Reset.Text = "Reset Position"
-        '
         'Render
         '
         Me.Render.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
@@ -333,17 +158,17 @@ Partial Class Main
         Me.ToolStrip.Dock = System.Windows.Forms.DockStyle.Right
         Me.ToolStrip.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden
         Me.ToolStrip.ImeMode = System.Windows.Forms.ImeMode.Off
-        Me.ToolStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripLabel1, Me.SelectTool, Me.MoveTool, Me.ToolStripSeparator5, Me.ToolStripLabel2, Me.CreatePrimitveTriangle, Me.CreatePrimitiveSquare, Me.ToolStripSeparator6, Me.ToolStripLabel3, Me.CreateVertex, Me.ConnectNodes, Me.ConnectArcs, Me.ToolStripSeparator7, Me.CreateCamera})
+        Me.ToolStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripLabel1, Me.SelectTool, Me.MoveTool, Me.Delete, Me.ToolStripSeparator5, Me.ToolStripLabel2, Me.CreatePrimitveTriangle, Me.CreatePrimitiveSquare, Me.ToolStripSeparator6, Me.ToolStripLabel3, Me.CreateVertex, Me.ConnectNodes, Me.ConnectArcs, Me.ToolStripSeparator7, Me.CreateCamera, Me.CreateLayer, Me.ShowLayer, Me.HideLayer, Me.DeleteLayer})
         Me.ToolStrip.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.VerticalStackWithOverflow
-        Me.ToolStrip.Location = New System.Drawing.Point(731, 22)
+        Me.ToolStrip.Location = New System.Drawing.Point(724, 22)
         Me.ToolStrip.Name = "ToolStrip"
-        Me.ToolStrip.Size = New System.Drawing.Size(69, 428)
+        Me.ToolStrip.Size = New System.Drawing.Size(76, 428)
         Me.ToolStrip.TabIndex = 1
         '
         'ToolStripLabel1
         '
         Me.ToolStripLabel1.Name = "ToolStripLabel1"
-        Me.ToolStripLabel1.Size = New System.Drawing.Size(66, 15)
+        Me.ToolStripLabel1.Size = New System.Drawing.Size(73, 15)
         Me.ToolStripLabel1.Text = "Tools"
         '
         'SelectTool
@@ -352,7 +177,7 @@ Partial Class Main
         Me.SelectTool.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.SelectTool.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.SelectTool.Name = "SelectTool"
-        Me.SelectTool.Size = New System.Drawing.Size(66, 20)
+        Me.SelectTool.Size = New System.Drawing.Size(73, 20)
         Me.SelectTool.Text = "Select"
         Me.SelectTool.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
@@ -362,19 +187,28 @@ Partial Class Main
         Me.MoveTool.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.MoveTool.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.MoveTool.Name = "MoveTool"
-        Me.MoveTool.Size = New System.Drawing.Size(66, 20)
+        Me.MoveTool.Size = New System.Drawing.Size(73, 20)
         Me.MoveTool.Text = "Move"
         Me.MoveTool.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'Delete
+        '
+        Me.Delete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
+        Me.Delete.Image = CType(resources.GetObject("Delete.Image"), System.Drawing.Image)
+        Me.Delete.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.Delete.Name = "Delete"
+        Me.Delete.Size = New System.Drawing.Size(73, 19)
+        Me.Delete.Text = "Delete"
         '
         'ToolStripSeparator5
         '
         Me.ToolStripSeparator5.Name = "ToolStripSeparator5"
-        Me.ToolStripSeparator5.Size = New System.Drawing.Size(66, 6)
+        Me.ToolStripSeparator5.Size = New System.Drawing.Size(73, 6)
         '
         'ToolStripLabel2
         '
         Me.ToolStripLabel2.Name = "ToolStripLabel2"
-        Me.ToolStripLabel2.Size = New System.Drawing.Size(66, 15)
+        Me.ToolStripLabel2.Size = New System.Drawing.Size(73, 15)
         Me.ToolStripLabel2.Text = "Primitives"
         '
         'CreatePrimitveTriangle
@@ -383,7 +217,7 @@ Partial Class Main
         Me.CreatePrimitveTriangle.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.CreatePrimitveTriangle.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.CreatePrimitveTriangle.Name = "CreatePrimitveTriangle"
-        Me.CreatePrimitveTriangle.Size = New System.Drawing.Size(66, 20)
+        Me.CreatePrimitveTriangle.Size = New System.Drawing.Size(73, 20)
         Me.CreatePrimitveTriangle.Text = "Triangle"
         Me.CreatePrimitveTriangle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
@@ -393,19 +227,19 @@ Partial Class Main
         Me.CreatePrimitiveSquare.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.CreatePrimitiveSquare.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.CreatePrimitiveSquare.Name = "CreatePrimitiveSquare"
-        Me.CreatePrimitiveSquare.Size = New System.Drawing.Size(66, 20)
+        Me.CreatePrimitiveSquare.Size = New System.Drawing.Size(73, 20)
         Me.CreatePrimitiveSquare.Text = "Square"
         Me.CreatePrimitiveSquare.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'ToolStripSeparator6
         '
         Me.ToolStripSeparator6.Name = "ToolStripSeparator6"
-        Me.ToolStripSeparator6.Size = New System.Drawing.Size(66, 6)
+        Me.ToolStripSeparator6.Size = New System.Drawing.Size(73, 6)
         '
         'ToolStripLabel3
         '
         Me.ToolStripLabel3.Name = "ToolStripLabel3"
-        Me.ToolStripLabel3.Size = New System.Drawing.Size(66, 15)
+        Me.ToolStripLabel3.Size = New System.Drawing.Size(73, 15)
         Me.ToolStripLabel3.Text = "Custom"
         '
         'CreateVertex
@@ -414,7 +248,7 @@ Partial Class Main
         Me.CreateVertex.Image = CType(resources.GetObject("CreateVertex.Image"), System.Drawing.Image)
         Me.CreateVertex.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.CreateVertex.Name = "CreateVertex"
-        Me.CreateVertex.Size = New System.Drawing.Size(66, 19)
+        Me.CreateVertex.Size = New System.Drawing.Size(73, 19)
         Me.CreateVertex.Text = "Vertex"
         '
         'ConnectNodes
@@ -423,7 +257,7 @@ Partial Class Main
         Me.ConnectNodes.Image = CType(resources.GetObject("ConnectNodes.Image"), System.Drawing.Image)
         Me.ConnectNodes.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ConnectNodes.Name = "ConnectNodes"
-        Me.ConnectNodes.Size = New System.Drawing.Size(66, 19)
+        Me.ConnectNodes.Size = New System.Drawing.Size(73, 19)
         Me.ConnectNodes.Text = "Edge"
         '
         'ConnectArcs
@@ -432,13 +266,13 @@ Partial Class Main
         Me.ConnectArcs.Image = CType(resources.GetObject("ConnectArcs.Image"), System.Drawing.Image)
         Me.ConnectArcs.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ConnectArcs.Name = "ConnectArcs"
-        Me.ConnectArcs.Size = New System.Drawing.Size(66, 19)
+        Me.ConnectArcs.Size = New System.Drawing.Size(73, 19)
         Me.ConnectArcs.Text = "Face"
         '
         'ToolStripSeparator7
         '
         Me.ToolStripSeparator7.Name = "ToolStripSeparator7"
-        Me.ToolStripSeparator7.Size = New System.Drawing.Size(66, 6)
+        Me.ToolStripSeparator7.Size = New System.Drawing.Size(73, 6)
         '
         'CreateCamera
         '
@@ -446,8 +280,35 @@ Partial Class Main
         Me.CreateCamera.Image = CType(resources.GetObject("CreateCamera.Image"), System.Drawing.Image)
         Me.CreateCamera.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.CreateCamera.Name = "CreateCamera"
-        Me.CreateCamera.Size = New System.Drawing.Size(66, 19)
+        Me.CreateCamera.Size = New System.Drawing.Size(73, 19)
         Me.CreateCamera.Text = "Camera"
+        '
+        'CreateLayer
+        '
+        Me.CreateLayer.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
+        Me.CreateLayer.Image = CType(resources.GetObject("CreateLayer.Image"), System.Drawing.Image)
+        Me.CreateLayer.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.CreateLayer.Name = "CreateLayer"
+        Me.CreateLayer.Size = New System.Drawing.Size(73, 19)
+        Me.CreateLayer.Text = "New Layer"
+        '
+        'ShowLayer
+        '
+        Me.ShowLayer.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
+        Me.ShowLayer.Image = CType(resources.GetObject("ShowLayer.Image"), System.Drawing.Image)
+        Me.ShowLayer.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ShowLayer.Name = "ShowLayer"
+        Me.ShowLayer.Size = New System.Drawing.Size(73, 19)
+        Me.ShowLayer.Text = "Show Layer"
+        '
+        'HideLayer
+        '
+        Me.HideLayer.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
+        Me.HideLayer.Image = CType(resources.GetObject("HideLayer.Image"), System.Drawing.Image)
+        Me.HideLayer.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.HideLayer.Name = "HideLayer"
+        Me.HideLayer.Size = New System.Drawing.Size(73, 19)
+        Me.HideLayer.Text = "Hide Layer"
         '
         'KeyframeSplitter
         '
@@ -459,7 +320,7 @@ Partial Class Main
         'KeyframeSplitter.Panel1
         '
         Me.KeyframeSplitter.Panel1.Controls.Add(Me.PropertiesSplitter)
-        Me.KeyframeSplitter.Size = New System.Drawing.Size(731, 428)
+        Me.KeyframeSplitter.Size = New System.Drawing.Size(724, 428)
         Me.KeyframeSplitter.SplitterDistance = 289
         Me.KeyframeSplitter.SplitterWidth = 10
         Me.KeyframeSplitter.TabIndex = 2
@@ -477,8 +338,8 @@ Partial Class Main
         'PropertiesSplitter.Panel2
         '
         Me.PropertiesSplitter.Panel2.Controls.Add(Me.OutputBox)
-        Me.PropertiesSplitter.Size = New System.Drawing.Size(731, 289)
-        Me.PropertiesSplitter.SplitterDistance = 193
+        Me.PropertiesSplitter.Size = New System.Drawing.Size(724, 289)
+        Me.PropertiesSplitter.SplitterDistance = 190
         Me.PropertiesSplitter.SplitterWidth = 10
         Me.PropertiesSplitter.TabIndex = 0
         '
@@ -496,8 +357,8 @@ Partial Class Main
         'SplitContainer1.Panel2
         '
         Me.SplitContainer1.Panel2.Controls.Add(Me.Outliner)
-        Me.SplitContainer1.Size = New System.Drawing.Size(193, 289)
-        Me.SplitContainer1.SplitterDistance = 252
+        Me.SplitContainer1.Size = New System.Drawing.Size(190, 289)
+        Me.SplitContainer1.SplitterDistance = 121
         Me.SplitContainer1.SplitterWidth = 10
         Me.SplitContainer1.TabIndex = 0
         '
@@ -507,15 +368,17 @@ Partial Class Main
         Me.PropertiesControl.Location = New System.Drawing.Point(0, 0)
         Me.PropertiesControl.Name = "PropertiesControl"
         Me.PropertiesControl.SelectedIndex = 0
-        Me.PropertiesControl.Size = New System.Drawing.Size(193, 252)
+        Me.PropertiesControl.Size = New System.Drawing.Size(190, 121)
         Me.PropertiesControl.TabIndex = 0
         '
         'Outliner
         '
         Me.Outliner.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Outliner.FullRowSelect = True
+        Me.Outliner.LabelEdit = True
         Me.Outliner.Location = New System.Drawing.Point(0, 0)
         Me.Outliner.Name = "Outliner"
-        Me.Outliner.Size = New System.Drawing.Size(193, 27)
+        Me.Outliner.Size = New System.Drawing.Size(190, 158)
         Me.Outliner.TabIndex = 0
         '
         'OutputBox
@@ -523,17 +386,26 @@ Partial Class Main
         Me.OutputBox.Dock = System.Windows.Forms.DockStyle.Fill
         Me.OutputBox.Location = New System.Drawing.Point(0, 0)
         Me.OutputBox.Name = "OutputBox"
-        Me.OutputBox.Size = New System.Drawing.Size(528, 289)
+        Me.OutputBox.Size = New System.Drawing.Size(524, 289)
         Me.OutputBox.TabIndex = 0
         Me.OutputBox.TabStop = False
         '
         'OpenFileDialog
         '
-        Me.OpenFileDialog.Filter = """2D Blender Files|*.tbl|All files|*.*"
+        Me.OpenFileDialog.Filter = "2D Blender Files|*.tbl|All files|*.*"
         '
         'SaveFileDialog
         '
-        Me.SaveFileDialog.Filter = """2D Blender Files|*.tbl|All files|*.*"
+        Me.SaveFileDialog.Filter = "2D Blender Files|*.tbl|All files|*.*"
+        '
+        'DeleteLayer
+        '
+        Me.DeleteLayer.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
+        Me.DeleteLayer.Image = CType(resources.GetObject("DeleteLayer.Image"), System.Drawing.Image)
+        Me.DeleteLayer.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.DeleteLayer.Name = "DeleteLayer"
+        Me.DeleteLayer.Size = New System.Drawing.Size(73, 19)
+        Me.DeleteLayer.Text = "Delete Layer"
         '
         'Main
         '
@@ -578,30 +450,6 @@ Partial Class Main
     Private WithEvents ToolStripSeparator1 As ToolStripSeparator
     Friend WithEvents Save As ToolStripMenuItem
     Friend WithEvents SaveAs As ToolStripMenuItem
-    Friend WithEvents ToolStripSeparator2 As ToolStripSeparator
-    Friend WithEvents Import As ToolStripMenuItem
-    Friend WithEvents Export As ToolStripMenuItem
-    Private WithEvents Edit As ToolStripDropDownButton
-    Friend WithEvents Undo As ToolStripMenuItem
-    Friend WithEvents Redo As ToolStripMenuItem
-    Private WithEvents ToolStripSeparator3 As ToolStripSeparator
-    Friend WithEvents Cut As ToolStripMenuItem
-    Friend WithEvents Copy As ToolStripMenuItem
-    Friend WithEvents Paste As ToolStripMenuItem
-    Friend WithEvents ToolStripSeparator4 As ToolStripSeparator
-    Friend WithEvents Delete As ToolStripMenuItem
-    Friend WithEvents View As ToolStripDropDownButton
-    Friend WithEvents Zoom As ToolStripMenuItem
-    Friend WithEvents Zoom10 As ToolStripMenuItem
-    Friend WithEvents Zoom25 As ToolStripMenuItem
-    Friend WithEvents Zoom50 As ToolStripMenuItem
-    Friend WithEvents Zoom100 As ToolStripMenuItem
-    Friend WithEvents Zoom150 As ToolStripMenuItem
-    Friend WithEvents Zoom200 As ToolStripMenuItem
-    Friend WithEvents Zoom300 As ToolStripMenuItem
-    Friend WithEvents Zoom400 As ToolStripMenuItem
-    Friend WithEvents DarkMode As ToolStripMenuItem
-    Friend WithEvents Reset As ToolStripMenuItem
     Private WithEvents SplitContainer1 As SplitContainer
     Friend WithEvents PropertiesControl As TabControl
     Friend WithEvents Outliner As TreeView
@@ -624,4 +472,9 @@ Partial Class Main
     Friend WithEvents RenderAnimation As ToolStripMenuItem
     Friend WithEvents ToolStripSeparator7 As ToolStripSeparator
     Friend WithEvents CreateCamera As ToolStripButton
+    Friend WithEvents CreateLayer As ToolStripButton
+    Friend WithEvents HideLayer As ToolStripButton
+    Friend WithEvents Delete As ToolStripButton
+    Friend WithEvents ShowLayer As ToolStripButton
+    Friend WithEvents DeleteLayer As ToolStripButton
 End Class

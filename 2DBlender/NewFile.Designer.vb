@@ -351,7 +351,8 @@ Partial Class NewFile
         '
         Me.FileLocationDialog.DefaultExt = "tbl"
         Me.FileLocationDialog.FileName = "Project"
-        Me.FileLocationDialog.Filter = """2D Blender Files|*.tbl|All files|*.*"
+        Me.FileLocationDialog.Filter = "2D Blender Files|*.tbl|All files|*.*"
+        Me.FileLocationDialog.OverwritePrompt = False
         '
         'NewFile
         '

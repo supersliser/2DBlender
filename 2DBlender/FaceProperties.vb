@@ -1,8 +1,8 @@
 ﻿Public Class FaceProperties
-    Private Fill As Fill
+    Private Fill As Fill 'Stores the currently selected fill
     Public Setup As Boolean = True
 
-    Public Sub New(NewFill As Fill)
+    Public Sub New(NewFill As Fill) 'sets up the properties viewport with the current values of the fills
 
         ' This call is required by the designer.
         InitializeComponent()
@@ -13,13 +13,13 @@
         NameValue.Text = Fill.Name
     End Sub
 
-    Private Sub ExportChanges(oldfill As Fill)
+    Private Sub ExportChanges(oldfill As Fill) 'applies the stored fill to the display fill in the main viewport
         Main.CurrentLayer.EditFill(oldfill, Fill)
         Main.RefreshImage()
         Main.KeyframeViewer.RefreshImage()
     End Sub
 
-    Public Sub RefreshFill(Fill As Fill)
+    Public Sub RefreshFill(Fill As Fill) 'edits the local fill based on the passed value and resets the viewport to display that data
         Setup = True
         Me.Fill = Fill
         Colour.BackColor = Fill.CurrentValue
@@ -27,7 +27,7 @@
         NameValue.Text = Fill.Name
     End Sub
 
-    Private Sub Colour_MouseClick(sender As Object, e As MouseEventArgs) Handles Colour.MouseClick
+    Private Sub Colour_MouseClick(sender As Object, e As MouseEventArgs) Handles Colour.MouseClick 'edits the local fill based on the event then exports that to the global fill
         If Not Setup Then
             Dim oldfill As Fill = Fill
             ColorDialog1.ShowDialog()
@@ -39,9 +39,14 @@
 
     Private Sub Name_TextChanged(sender As Object, e As EventArgs) Handles NameValue.LostFocus
         If Not Setup Then
-            Dim oldfill As Fill = Fill
-            Fill.Name = NameValue.Text
-            ExportChanges(oldfill)
+            If NameValue.Text = "" Then
+                NameValue.Text = Fill.Name
+            Else
+                Dim oldfill As Fill = Fill
+                Fill.Name = NameValue.Text
+                ExportChanges(oldfill)
+                Main.RefreshOutliner()
+            End If
         End If
     End Sub
 
@@ -58,6 +63,14 @@
             Fill.KF.AddInterpolation(Main.CurrentFrame, Interpolations.StaticMovement)
         ElseIf InterpolationType.Text = "Constant" Then
             Fill.KF.AddInterpolation(Main.CurrentFrame, Interpolations.ConstantMovement)
+        End If
+    End Sub
+
+    Private Sub Delete_Click(sender As Object, e As EventArgs) Handles Delete.Click
+        If Not Setup Then
+            Dim oldfill As Fill = Fill
+            Fill.KF.DeleteKeyframe(Main.CurrentFrame)
+            ExportChanges(oldfill)
         End If
     End Sub
 End Class

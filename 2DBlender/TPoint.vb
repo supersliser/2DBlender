@@ -36,10 +36,10 @@
         WY = Main.Coordinates.ToWorld(GridLocation).Y
     End Sub
     Public Sub New(WorldX As Single, WorldY As Single)
-        WX = WorldX
-        WY = WorldY
         GX = Main.Coordinates.ToGrid(New Point(WorldX, WorldY)).X
         GY = Main.Coordinates.ToGrid(New Point(WorldX, WorldY)).Y
+        WX = Main.Coordinates.ToWorld(New Point(GX, GY)).X
+        WY = Main.Coordinates.ToWorld(New Point(GX, GY)).Y
     End Sub
     Public Sub New(WorldLocation As PointF)
         WX = WorldLocation.X

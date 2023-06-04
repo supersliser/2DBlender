@@ -43,7 +43,8 @@
         Else
             Main.IO = New TwoDBlenderFile(FileLocation.Text)
             Main.IO.CreateFile()
-            Main.SetupViewport(New Size(CanvasWidth.Value, CanvasHeight.Value), New Size(GridBoxWidth.Value, GridBoxHeight.Value), FrameCount.Value)
+            Main.SetupNewViewport(New Size(CanvasWidth.Value, CanvasHeight.Value), New Size(GridBoxWidth.Value, GridBoxHeight.Value), FrameCount.Value)
+            Main.IO.Write(Main.Layers.ToArray, Main.Coordinates, Main.KeyframeViewer.TrackBar.Maximum)
             OnDeactivate(e)
             Hide()
         End If

@@ -2,7 +2,7 @@
     Private node As Node
     Public setup As Boolean = True
 
-    Public Sub New(SelectedNode As Node)
+    Public Sub New(SelectedNode As Node, GridSize As Size)
 
         ' This call is required by the designer.
         InitializeComponent()
@@ -10,7 +10,9 @@
         ' Add any initialization after the InitializeComponent() call.
         node = SelectedNode
         X.Value = SelectedNode.CurrentValue.GridX
+        X.Maximum = GridSize.Width
         Y.Value = SelectedNode.CurrentValue.GridY
+        Y.Maximum = GridSize.Height
         NameValue.Text = SelectedNode.Name
     End Sub
 
@@ -55,9 +57,14 @@
 
     Private Sub NameValue_TextChanged(sender As Object, e As EventArgs) Handles NameValue.LostFocus
         If Not setup Then
-            Dim oldnode As Node = node
-            node.Name = NameValue.Text
-            ExportChanges(oldnode)
+            If NameValue.Text = "" Then
+                NameValue.Text = node.Name
+            Else
+                Dim oldnode As Node = node
+                node.Name = NameValue.Text
+                ExportChanges(oldnode)
+                Main.RefreshOutliner()
+            End If
         End If
     End Sub
 
@@ -66,6 +73,14 @@
             node.KF.AddInterpolation(Main.CurrentFrame, Interpolations.StaticMovement)
         ElseIf InterpolationType.Text = "Constant" Then
             node.KF.AddInterpolation(Main.CurrentFrame, Interpolations.ConstantMovement)
+        End If
+    End Sub
+
+    Private Sub Delete_Click(sender As Object, e As EventArgs) Handles Delete.Click
+        If Not setup Then
+            Dim oldnode As Node = node
+            node.KF.DeleteKeyframe(Main.CurrentFrame)
+            ExportChanges(oldnode)
         End If
     End Sub
 End Class

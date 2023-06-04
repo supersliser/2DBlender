@@ -6,6 +6,8 @@
         InitializeComponent()
         DefaultCanvasSize = ViewportRectangle.Size
         OutputViewportRectangle = ViewportRectangle
+        X.Maximum = Main.Coordinates.GridSize.Width - 1
+        Y.Maximum = Main.Coordinates.GridSize.Height - 1
         Zoom.Value = 100
     End Sub
 
@@ -34,5 +36,15 @@
             OutputViewportRectangle.Y = New TPoint(New Point(X.Value, Y.Value)).WorldY
             ExportChanges()
         End If
+    End Sub
+
+    Public Sub ExternalRefresh(ViewportRectangle As Rectangle)
+        OutputViewportRectangle = ViewportRectangle
+        DefaultCanvasSize = ViewportRectangle.Size
+    End Sub
+    Public Sub ExternalRefresh(ViewportRectangle As Rectangle, Zoom As UInteger)
+        OutputViewportRectangle = ViewportRectangle
+        DefaultCanvasSize = ViewportRectangle.Size
+        Me.Zoom.Value = Zoom
     End Sub
 End Class
